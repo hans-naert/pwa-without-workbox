@@ -1,0 +1,13 @@
+{
+  "name": "pwa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx http-server .\\public -p 3000 -c-1",
+    "manifest": "npx pwa-asset-generator .\\icon-512x512.png -i .\\public\\index.html -m .\\public\\manifest.json .\\public\\icons -v ./icons" 
+  },
+  "author": "",
+  "license": "ISC"
+}
