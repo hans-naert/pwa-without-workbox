@@ -32,7 +32,7 @@ const files = [
     "./icons/apple-splash-640-1136.jpg",
     "./icons/apple-splash-1136-640.jpg",
     "./icons/manifest-icon-512.maskable.png",
-    "./icons/manifest-icon-192.maskable.png",    
+    "./icons/manifest-icon-192.maskable.png",
     "./index.html",
     "./index.js",
     "./manifest.json"
@@ -55,5 +55,13 @@ self.addEventListener('activate', event => {
                 return cacheName !== currentCache
             }).map(cacheName => caches.delete(cacheName))
         ))
+    );
+});
+
+self.addEventListener('fetch', event => {
+    event.respondWith(
+        caches.match(event.request).then(function (response) {
+            return response || fetch(event.request);
+        })
     );
 });
